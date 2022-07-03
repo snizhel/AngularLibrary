@@ -1,0 +1,92 @@
+<div class="content">
+  <div class="row">
+    <div class="input-group">
+      <input
+        style="font-weight: bold"
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="title"
+      />
+      <div>
+        <button
+          style="font-weight: bold; bottom: 8.1px"
+          class="btn btn-group"
+          type="button"
+          (click)="searchBookName()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button
+        *ngIf="this.currentUser.roles == 'ADMIN'"
+        routerLink="/insertBook"
+        class="btn"
+      >
+        Add new Book
+      </button>
+
+      <div class="card"></div>
+
+      <div class="card-body all-icons">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Publisher</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col" *ngIf="this.currentUser.roles == 'ADMIN'">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let book of books
+                        | paginate: { itemsPerPage: 5, currentPage: page }
+                    "
+                  >
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.publisher }}</td>
+                    <td>{{ book.quantity }}</td>
+                    <td *ngIf="this.currentUser.roles == 'ADMIN'">
+                      <a
+                        class="btn btn-primary"
+                        routerLink="/bookDetail/{{ book.id }}"
+                      >
+                        Detail book
+                      </a>
+                    </td>
+                    <td
+                      *ngIf="
+                        this.currentUser.roles == 'USER' && book.quantity > 0
+                      "
+                    >
+                      <a
+                        class="btn btn-primary"
+                        routerLink="/borrowBook/{{ book.id }}"
+                      >
+                        Borrow Book
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-controls
+            (pageChange)="page = $event"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

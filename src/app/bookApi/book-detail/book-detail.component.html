@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div>
+        <div *ngIf="currentBook.id" class="edit-form">
+          <h4>Book Detail</h4>
+          <form ngNativeValidate (ngSubmit)="onSubmit()" class="row">
+            <div class="form-group">
+              <label style="font-weight: bold" for="title">Title</label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                pattern="[a-zA-Z0-9 ]+"
+                required
+                [(ngModel)]="currentBook.title"
+              />
+            </div>
+            <div class="form-group">
+              <label style="font-weight: bold" for="author">Author</label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="text"
+                class="form-control"
+                id="description"
+                required
+                [(ngModel)]="currentBook.author"
+                name="description"
+              />
+            </div>
+
+            <div class="form-group">
+              <label style="font-weight: bold" for="publisher">Publisher</label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="text"
+                class="form-control"
+                id="publisher"
+                required
+                [(ngModel)]="currentBook.publisher"
+                name="publisher"
+              />
+            </div>
+
+            <div class="form-group">
+              <label style="font-weight: bold" for="quantity">Quantity</label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="number"
+                class="form-control"
+                id="quantity"
+                required
+                min="0.000"
+                [(ngModel)]="currentBook.quantity"
+                name="quantity"
+              />
+            </div>
+
+            <a class="btn btn-back" routerLink="/icons">Back</a>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="clickMethod(this.currentBook.title)"
+            >
+              Delete
+            </button>
+            <button type="submit" class="btn btn-success">Update</button>
+
+            <p>{{ message }}</p>
+          </form>
+        </div>
+
+        <div *ngIf="!currentBook.id">
+          <br />
+          <p>Cannot access this Tutorial...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

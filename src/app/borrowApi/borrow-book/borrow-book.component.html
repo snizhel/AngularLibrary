@@ -1,0 +1,122 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div>
+        <div *ngIf="currentUser.id" class="edit-form">
+          <h4>Borrow Book Form</h4>
+
+          <form ngNativeValidate (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="hidden"
+                class="form-control"
+                id="title"
+                name="title"
+                pattern="[a-zA-Z0-9 ]+"
+                required
+                [(ngModel)]="user.name"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                disabled
+                style="background-color: whitesmoke; color: black"
+                type="hidden"
+                class="form-control"
+                id="description"
+                required
+                [(ngModel)]="user.phone"
+                name="description"
+              />
+            </div>
+
+            <div class="form-group">
+              <!-- <label style="font-weight: bold" for="publisher">User Id</label> -->
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="hidden"
+                class="form-control"
+                id="publisher"
+                disabled=""
+                [(ngModel)]="borrowBook.userid.id"
+                name="publisher"
+              />
+            </div>
+
+            <div class="form-group">
+              <label style="font-weight: bold" for="publisher">Book Name</label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="text"
+                disabled
+                class="form-control"
+                id="date"
+                required
+                [(ngModel)]="book.title"
+                name="date"
+              />
+            </div>
+            <div class="form-group">
+              <label style="font-weight: bold" for="publisher"
+                >Borrow Date</label
+              >
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="text"
+                disabled
+                class="form-control"
+                id="date"
+                required
+                [value]="borrowBook.dateOfBorrow"
+                min="{{ startDate }}"
+                max="{{ borrowBook.expiredTerm }}"
+                data-date-format="mm/dd/yyyy"
+                name="date"
+              />
+            </div>
+            <div class="form-group">
+              <label style="font-weight: bold" for="publisher"
+                >Return Book Date</label
+              >
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="date"
+                class="form-control"
+                id="date"
+                required
+                min="{{ startDate }}"
+                [(ngModel)]="borrowBook.expiredTerm"
+                name="date"
+              />
+            </div>
+
+            <!-- <p>In our library, per user can only borrow one book</p> -->
+
+            <button
+              style="font-weight: bold"
+              routerLink="/icons"
+              class="btn btn-back"
+            >
+              Back to Book page
+            </button>
+            <button
+              style="font-weight: bold"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Register borrow
+            </button>
+
+            <p>{{ message }}</p>
+          </form>
+        </div>
+
+        <div *ngIf="!currentUser.id">
+          <br />
+          <p>Cannot access this Tutorial...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

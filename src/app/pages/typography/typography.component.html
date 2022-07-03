@@ -1,0 +1,53 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="typography-line">
+            <span> Books are being borrowed </span>
+            <div class="card-body all-icons">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Phone</th>
+                          <th scope="col">Borrow Day</th>
+                          <th scope="col">Epired Term</th>
+                          <th scope="col">Book Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          *ngFor="
+                            let borrow of borrowBooks
+                              | paginate: { itemsPerPage: 5, currentPage: page }
+                          "
+                        >
+                          <td>{{ borrow.userId.name }}</td>
+                          <td>{{ borrow.userId.phone }}</td>
+                          <td>{{ borrow.dateOfBorrow }}</td>
+                          <td>{{ borrow.expiredTerm }}</td>
+                          <td>
+                            <p *ngFor="let book of borrow.books">
+                              {{ book.title }}
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <pagination-controls
+                  (pageChange)="page = $event"
+                ></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="content">
+  <div class="row">
+    <div class="input-group">
+      <input
+        style="font-weight: bold"
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="name"
+      />
+      <div>
+        <button
+          (click)="searchUser()"
+          style="font-weight: bold; bottom: 8.1px"
+          class="btn btn-group"
+          type="button"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card"></div>
+
+      <div class="card-body all-icons">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Role</th>
+                    <th scope="col" *ngIf="this.currentUser.roles == 'ADMIN'">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let user of userList
+                        | paginate: { itemsPerPage: 5, currentPage: page }
+                    "
+                  >
+                    <td>
+                      {{ user.name }}
+                    </td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>{{ user.status }}</td>
+                    <td *ngFor="let role of user.roles">{{ role.name }}</td>
+                    <td
+                      *ngIf="
+                        this.currentUser.roles == 'ADMIN' &&
+                        user.name != this.currentUser.username
+                      "
+                    >
+                      <a
+                        routerLink="/userDetail/{{ user.id }}"
+                        class="btn btn-primary"
+                      >
+                        Check Detail for User
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pagination-controls
+            (pageChange)="page = $event"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

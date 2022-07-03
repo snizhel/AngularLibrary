@@ -1,0 +1,86 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div>
+        <div *ngIf="currentUser.id" class="edit-form">
+          <h4>User Detail</h4>
+          <form ngNativeValidate (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label style="font-weight: bold" for="title">Name</label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                pattern="[a-zA-Z0-9 ]+"
+                required
+                [(ngModel)]="currentUser.name"
+              />
+            </div>
+            <div class="form-group">
+              <label style="font-weight: bold" for="author">Phone</label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="number"
+                class="form-control"
+                id="description"
+                required
+                [(ngModel)]="currentUser.phone"
+                name="description"
+              />
+            </div>
+
+            <div class="form-group">
+              <label style="font-weight: bold" for="publisher">Address</label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                type="text"
+                class="form-control"
+                id="publisher"
+                required
+                [(ngModel)]="currentUser.address"
+                name="publisher"
+              />
+            </div>
+
+            <div class="form-group" *ngFor="let role of currentUser.roles">
+              <label> Role </label>
+              <input
+                style="background-color: whitesmoke; color: black"
+                class="form-control"
+                disabled=""
+                type="text"
+                [(ngModel)]="role.name"
+              />
+            </div>
+
+            <a
+              ><button
+                (click)="deleteUser(this.currentUser.name)"
+                class="btn btn-danger"
+              >
+                Delete
+              </button></a
+            >
+
+            <button type="submit" class="btn btn-success">Update</button>
+            <button type="button" class="btn btn-warning" (click)="banUser()">
+              Block user
+            </button>
+            <button type="button" class="btn btn-primary" (click)="unbanUser()">
+              Unblock user
+            </button>
+
+            <p>{{ message }}</p>
+          </form>
+        </div>
+
+        <div *ngIf="!currentUser.id">
+          <br />
+          <p>Cannot access this Tutorial...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
