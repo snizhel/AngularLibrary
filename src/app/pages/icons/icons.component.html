@@ -66,7 +66,7 @@
                           this.currentUser.roles == 'USER' && book.quantity > 0
                         "
                       >
-                        <a
+                        <a *ngIf="user.status =='AVAILABLE'"
                           class="btn btn-primary"
                           routerLink="/borrowBook/{{ book.id }}"
                         >

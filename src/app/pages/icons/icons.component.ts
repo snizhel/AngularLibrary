@@ -32,12 +32,13 @@ export class IconsComponent implements OnInit {
     });
   }
   ngOnInit() {
-    // this.getOneUser();
     this.getAllBooks();
+    this.getOneUser();
   }
   getOneUser() {
     this.userService.getOneUser(this.currentUser.id).subscribe((data) => {
       this.user = data;
+      console.log(this.user);
     });
   }
 
