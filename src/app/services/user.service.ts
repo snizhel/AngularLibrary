@@ -31,4 +31,10 @@ export class UserService {
   creatBorrowBook(borrowBook: any): Observable<any> {
     return this.http.post(url + "users/borrow", borrowBook);
   }
+  setStatus(id:number): Observable<borrowBook> {
+    return this.http.put<borrowBook>(`${url}users/borrow/${id}`, {});
+  }
+  getBorrowBookById(id:number): Observable<borrowBook[]> {
+    return this.http.get<borrowBook[]>(`${url}users/borrow/${id}`);
+  }
 }

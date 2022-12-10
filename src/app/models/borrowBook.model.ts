@@ -7,4 +7,5 @@ export class borrowBook {
   dateOfBorrow!: String;
   expiredTerm!: String;
   books?: book[];
+  status:String;
 }

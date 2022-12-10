@@ -43,6 +43,14 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     roles: ["ADMIN"],
   },
+  {
+    path: "/history",
+    title: "History",
+    rtlTitle: "طباعة",
+    icon: "icon-align-center",
+    class: "",
+    roles: ["USER"],
+  }
 ];
 
 @Component({

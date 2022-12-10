@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
       <div>
-        <div *ngIf="currentBook.id" class="edit-form">
-          <h4>Book Detail</h4>
+        <div *ngIf="currentBook.id" class="edit-form" style="padding-top: 7%">
+          <h1>Book Detail</h1>
+          <img  src="{{ currentBook.publisher }}"  width="270" height="160" alt="book" />
           <form ngNativeValidate (ngSubmit)="onSubmit()" class="row">
             <div class="form-group">
               <label style="font-weight: bold" for="title">Title</label>
@@ -32,7 +33,7 @@
             </div>
 
             <div class="form-group">
-              <label style="font-weight: bold" for="publisher">Publisher</label>
+              <label style="font-weight: bold" for="publisher">Image Url</label>
               <input
                 style="background-color: whitesmoke; color: black"
                 type="text"
@@ -70,6 +71,7 @@
 
             <p>{{ message }}</p>
           </form>
+
         </div>
 
         <div *ngIf="!currentBook.id">
@@ -77,6 +79,7 @@
           <p>Cannot access this Tutorial...</p>
         </div>
       </div>
+
     </div>
   </div>
 </div>

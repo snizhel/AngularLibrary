@@ -6,11 +6,13 @@ import { UserComponent } from "../../pages/user/user.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
+import { HistoryComponent } from "src/app/pages/history/history.component";
 export const AdminLayoutRoutes: Routes = [
   { path: "icons", component: IconsComponent },
   { path: "user", component: UserComponent },
   { path: "tables", component: TablesComponent },
   { path: "typography", component: TypographyComponent },
+  {path:"history",component:HistoryComponent},
   {
     path: "insertBook",
     loadChildren: () =>

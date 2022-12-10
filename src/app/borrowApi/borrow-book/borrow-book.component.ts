@@ -26,6 +26,7 @@ export class BorrowBookComponent implements OnInit {
     books: [],
     dateOfBorrow: this.startDate,
     expiredTerm: undefined,
+    status: "PENDING",
   };
   currentUser: any;
   constructor(

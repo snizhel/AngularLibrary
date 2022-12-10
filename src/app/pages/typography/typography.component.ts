@@ -9,6 +9,7 @@ import { UserService } from "src/app/services/user.service";
 export class TypographyComponent implements OnInit {
   borrowBooks: borrowBook[] = [];
   page: number;
+
   constructor(private userService: UserService) {}
 
   ngOnInit() {
@@ -20,4 +21,11 @@ export class TypographyComponent implements OnInit {
       console.log(this.borrowBooks);
     });
   }
+  setStatus(id: number) {
+    return this.userService.setStatus(id).subscribe((data) => {
+
+      this.getBorrowBook();
+    });
+  }
+
 }

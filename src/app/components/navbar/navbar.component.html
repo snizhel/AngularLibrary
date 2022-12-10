@@ -24,7 +24,9 @@
       <span class="navbar-toggler-bar navbar-kebab"> </span>
     </button>
     <div class="navbar-collapse" id="navigation">
+      <label style="padding-left: 80%;" class="form-control-label">Welcome <b>{{user.name}}</b></label>
       <ul class="navbar-nav ml-auto">
+
         <button
           class="btn btn-warning"
           (click)="logout()"
@@ -33,6 +35,7 @@
         >
           Log out
         </button>
+
 
         <li class="separator d-lg-none"></li>
       </ul>

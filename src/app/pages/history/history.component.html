@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-body">
           <div class="typography-line">
-            <span> Books are being borrowed </span>
+            <span>Waiting for your request borrow book approved  </span>
             <div class="card-body all-icons">
               <div class="container">
                 <div class="row">
@@ -37,7 +37,7 @@
                             </p>
                           </td>
                           <td>{{ borrow.status }}</td>
-                          <td> <button *ngIf=" borrow.status!='BORROWED' " (click)="setStatus(borrow.id)" class="btn btn-primary"> check</button></td>
+
                         </tr>
 
                       </tbody>
